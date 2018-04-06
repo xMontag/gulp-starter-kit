@@ -51,7 +51,8 @@ gulp.task('styles', () =>
     .pipe(browserSync.stream()),
 );
 
-gulp.task('scripts', () =>
+
+gulp.task('js', () =>
   gulp
     .src('./src/js/**/*.js')
     .pipe(plumber())
@@ -101,7 +102,7 @@ gulp.task('fonts', () =>
 gulp.task('watch', () => {
   gulp.watch('src/*.html', ['html']).on('change', browserSync.reload);
   gulp.watch('src/sass/**/*.scss', ['styles']);
-  gulp.watch('src/js/**/*.js', ['scripts']);
+  gulp.watch('src/js/**/*.js', ['js']);
 });
 
 gulp.task('serve', ['styles'], () =>
@@ -129,7 +130,7 @@ gulp.task('build', cb =>
     'fonts',
     'styles',
     'html',
-    'scripts',
+    'js',
     cb,
   ),
 );
